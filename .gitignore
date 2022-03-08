@@ -1,0 +1,13 @@
+bd2k-extras/
+pimmuno.py
+pimmuno_2.py
+*.pyc
+/src/*.egg-info/
+develop_data/
+venv/
+.cache/
+jobStore/
+test-report.xml
+__pycache__
+*.DONE
+*.docker

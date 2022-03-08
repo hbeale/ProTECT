@@ -1,0 +1,46 @@
+####################################################################################################
+##   All docker tools are available at dockerhub/aarjunrao (hence the default dockerhub in the    ##
+##   config yaml is aarjunrao). The Dockerfiles used to generate all docker images is available   ##
+##   at https://www.github.com/arkal/dockernator                                                  ##
+####################################################################################################
+
+# Alignment
+	cutadapt:1.9.1
+	bwa:0.7.9a
+	star:2.5.2b
+	starlong:2.4.2a
+
+# Alignment post
+	samtools:1.2
+	picard:1.135
+
+# Expression Estimation
+	rsem:1.2.20
+
+# Haplotyping
+	phlat:1.0
+
+# Mutation Calling
+	mutect:1.1.7
+	radia:bcda721fc1f9c28d8b9224c2f95c440759cd3a03
+	filterradia:bcda721fc1f9c28d8b9224c2f95c440759cd3a03
+	muse:1.0rc_submission_b391201
+	somaticsniper:1.0.4
+	somaticsniper-addons:1.0.4
+	samtools:0.1.8
+	strelka:1.0.15
+	bam-readcount:0.7.4
+
+# Mutation Annotation
+	snpeff:3.6
+
+# Mutation Translation
+	transgene:2.3.2
+
+# MHC:peptide binding prediction
+	mhci:2.13
+	mhcii:2.13
+	netmhciipan:3.1
+
+# Prediction Ranking
+	rankboost:2.1.4

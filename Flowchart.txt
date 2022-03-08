@@ -1,0 +1,96 @@
+# Copyright 2016 UCSC Computational Genomics Lab
+# Original contributor: Arjun Arkal Rao
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+
+                                            0
+                                            |
+                                            1
+                        ____________________|__________________
+                       /        |     |                |    |  \
+                      2--+    +-3     4-+           +--5 +--6   7--+
+                      |  |    | |     | |           |  |_|__|___|  |
+                      |  |    | |_____| |           |    |  |      |
+                      8   \_ _ \_ _|_ _ _\_ _ _ _ _/_ _ /_ _| _ _ /|
+                      |            |         _|_            |      |
+                      |            |        | 9 |           |      |
+                      |            |        +---+           |      |
+                  ____|____   _____|___________             |      |
+                 /    |    \ /   /   /  |  \   \            |      |
+                |     |     |   |   |   |   |   |           10     |
+                11    12    13  14  15  16  17  |           |      |
+                |     |     |   |   |   |   |   |           |      |
+                |     |     18  19  20  |   21  22          |      |
+                |     |     |   |   |   |   |   |           |      |
+                |      \_____\___\__|__/___/__ /            |      |
+                |                   |                       |      |
+                |                   23                      |      |
+                |                   |                       |      |
+                |                   24                      |      |
+                |                   \______________________/       |
+                |\_ _ _ _ _ _ _ _ _ _ _ _ _ _ _|_ _ _ _ _ _ _ _ _ __\_ _
+                |                              |                        _\__
+                |                              |                       | 25 |
+                |                              26                      +----+
+                |                  ____________|_____________
+                |                 /     /              \     \
+                |               MIN   MIT             MIIN  MIIT
+                |                |     |                |     |
+                |                 \_____\______________/_____/
+                |                              |
+                |                              27
+                |                             _|__
+                +----------------------------| 28 |
+                                             +----+
+
+     0 = Launchpad
+     1 = Prepare sample (Download if necessary)
+     2 = Process RNA for Adapters (CUTADAPT)
+     3 = Align Tumor DNA (BWA)
+     4 = Align Normal DNA (BWA)
+     5 = Decipher MHC Haplotype Tumor DNA (PHLAT)
+     6 = Decipher MHC Haplotype Normal DNA (PHLAT)
+     7 = Decipher MHC Haplotype Tumor RNA (PHLAT)
+     8 = Align RNA (STAR)
+     9 = Delete Fastqs to cleanup space for future jobs
+    10 = Merge PHLAT outputs (PYTHON SCRIPT)
+    11 = Calculate Gene Expression (RSEM)
+    12 = Identify Fusion Genes (Star Fusion + Fusion Inspector)
+   *13 = Mutation Calling 1 (RADIA)
+   *14 = Mutation Calling 2 (Mutect)
+   *15 = Mutation Calling 3 (MuSE)
+    16 = Mutation Calling 4 (Strelka)
+   *17 = Mutation Calling 5 (SomaticSniper)
+    18 = Merge Mutation Calls 1 (RADIA)
+    19 = Merge Mutation Calls 2 (Mutect)
+    20 = Merge Mutation Calls 3 (MuSE)
+    21 = Merge Mutation Calls 4 (SomaticSniper)
+    22 = INDEL Calling (Strelka)
+    23 = translate to Protein space (SnpEff, Future Translator)
+    24 = Convert AA change to peptides (TRANSGENE)
+    25 = MHC Pathway assessment
+   +26 = Spawn mhci prediction on n mhci alleles (MI)
+         and mhcii prediction on m mhcii alleles (MII)
+    MIN = Predict normal peptides binding to n predicted MHCI alleles
+    MIT = Predict tumor peptides binding to n predicted MHCI alleles
+    MIIN = Predict normal peptides binding to n predicted MHCII alleles
+    MIIT = Predict tumor peptides binding to n predicted MHCII alleles
+    27 = merge MHC:peptide binding predictions
+    28 = Rank Boost
+
+
+    * = Nodes will dynamically spawn 1 child per input chromosome in input fai
+    + = Nodes will dynamically spawn 1 child per predicted mhc (I and II)
+
+    Numbers in boxes represent terminal nodes of the DAG
