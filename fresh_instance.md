@@ -4,7 +4,7 @@
 * install python3 pip
     sudo apt install python3-pip
 * install virtualenv
-    pip install virutalenv
+    pip install virtualenv
 * update path
     PATH=${PATH}:/home/ubuntu/.local/bin
 
